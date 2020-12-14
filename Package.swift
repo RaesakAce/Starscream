@@ -23,8 +23,15 @@ import PackageDescription
 
 let package = Package(
     name: "Starscream",
+        products: [
+                .library(name: "Starscream", targets: ["Starscream"])
+        ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-crypto", .branch("main")),
         .package(url: "https://github.com/apple/swift-nio-zlib-support.git", from: "1.0.0"),
+        ],
+        targets: [
+            .target(name: "Starscream", dependencies: [
+                .product(name: "Crypto", package: "swift-crypto")]),
         ]
 )
